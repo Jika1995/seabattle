@@ -17,7 +17,6 @@ wss.on('connection', function connection(ws: WebSocket) {
       switch (type) {
         case 'reg':
           register(data, ws);
-          // console.log(data, ws);
           break;
         case 'create_room':
           createRoom(ws);
@@ -29,7 +28,6 @@ wss.on('connection', function connection(ws: WebSocket) {
           startGame(data, ws);
           break;
         case 'attack':
-          // console.log('server data attack', data)
           attack(data);
           break;
         case 'randomAttack':

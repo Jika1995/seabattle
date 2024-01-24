@@ -18,7 +18,6 @@ export const attack = (data1: string) => {
 
   const { status, whoShots, currentGame, isAllKilled, winnerName } = shotResult;
 
-  // console.log('shotResult', shotResult)
   const data = {
     type: "attack",
     data: JSON.stringify({
@@ -128,17 +127,14 @@ export const getTurn = (gameId: number, playerIdx: number, x: number, y: number)
     winnerName = currentPlayer.name
     currentPlayer.wins++
   }
-  // console.log('status', status);
+
   return { status, whoShots, currentGame, isAllKilled, winnerName }
 }
 
 export const getShipsCoords = (enemyShips: Ship[]) => {
   const coorData = []
 
-  // console.log('enemy ships', enemyShips);
-
   enemyShips.map((ship) => {
-    // console.log('1 enemy ship', ship);
 
     if (ship.length === 1) {
       coorData.push({ toHit: 1, positions: [ship.position] })
@@ -149,19 +145,15 @@ export const getShipsCoords = (enemyShips: Ship[]) => {
       shipCoor.push(shipBeginCoor);
 
       for (let i = 1; i < ship.length; i++) {
-        // console.log('direction', ship.direction);
 
         if (ship.direction === false) {
           const shipPartCoor = { x: ship.position.x + i, y: ship.position.y }
-          // console.log('прибавил ли', shipPartCoor)
           shipCoor.push(shipPartCoor)
         } else {
           const shipPartCoor = { x: ship.position.x, y: ship.position.y + i };
-          // console.log('прибавил ли', shipPartCoor)
           shipCoor.push(shipPartCoor)
         }
       };
-      // console.log('измененные', shipCoor);
 
       coorData.push({
         toHit: shipCoor.length,
