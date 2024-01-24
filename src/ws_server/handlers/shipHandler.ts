@@ -22,7 +22,6 @@ export const startGame = (data1: string, ws: WebSocket) => {
 
   if (!game) {
     const authorPlayer = players.find((player) => player.ws === ws);
-    // authorPlayer.ships = shipData.ships.map((ship) => ({ ...ship, hits: 0 }));
     authorPlayer.ships = shipData.ships
     const newGame = {
       gameId: shipData.gameId,
@@ -32,7 +31,6 @@ export const startGame = (data1: string, ws: WebSocket) => {
     games.push(newGame)
   } else {
     const secondPlayer = players.find((player) => player.ws === ws);
-    // secondPlayer.ships = shipData.ships.map((ship) => ({ ...ship, hits: 0 }));
     secondPlayer.ships = shipData.ships;
     game.players.push(secondPlayer);
 
@@ -43,7 +41,6 @@ export const startGame = (data1: string, ws: WebSocket) => {
     game.players.map((player) => {
       const currentPlayer = players.find((user) => user.name === player.name);
       game.turn = whoBegins;
-      // console.log('игрок и его корабли', currentPlayer, currentPlayer.ships)
       const data = {
         type: "start_game",
         data: JSON.stringify({
