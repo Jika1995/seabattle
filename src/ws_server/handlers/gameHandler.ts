@@ -70,7 +70,7 @@ export const randomAttack = (data1: string) => {
       status,
     }),
     id: 0,
-  };
+  }
 
   currentGame.turn = whoShots;
 
